@@ -6,12 +6,26 @@
     <ScrollView>
         <VerticalStackLayout>
             <Label Text="Welcome" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes ="Bold" FontSize="30" TextColor="AliceBlue"/>
-            <HorizontalStackLayout>
+            
                 <Label Text="Name:"/>
                 <Entry x:Name="NameBox"/>
-            </HorizontalStackLayout>
-            <Button x:Name="startButton" Text="Start"/>
-            <Label x:Name="movies" Text="" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes ="Bold" FontSize="30" TextColor="AliceBlue"/>
+
+            <CollectionView ItemsSource="{Binding Movies}"
+SelectionMode="Single"
+SelectedItem="{Binding SelectedMovie}"
+>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding title}" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="{Binding emoji}" FontSize="Small"/>
+                            <Label Text="{Binding year}" FontSize="Small"/>
+                            <Label Text="{Binding Genre}" FontSize="Small"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
         </VerticalStackLayout>
     </ScrollView>
 
